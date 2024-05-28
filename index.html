@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김수아 GSAP 응용</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <section class="visual">
+        <div class="main">
+            <div class="inner">
+                <!--배경에서 도는 별모양-->
+                <div class="star yellow"><img src="images/star01.png" alt=""></div>
+                <div class="star white"><img src="images/star02.png" alt=""></div>
+                <div class="star magenta"><img src="images/star03.png" alt=""></div>
+
+                <!--창 개체-->
+                <div class="window">
+                    <div class="window1 popup"><img src="images/window01.png" alt=""></div>
+                    <div class="window2 popup"><img src="images/window02.png" alt=""></div>
+                    <div class="window3 popup"><img src="images/window03.png" alt=""></div>
+                    <div class="window4 popup"><img src="images/window02.png" alt=""></div>
+                    <div class="window5 popup"><img src="images/window03.png" alt=""></div>
+                </div>
+                
+
+                <!--메시지 팝업-->
+                <div class="chat">
+                    <div class="chat1 popup"><img src="images/chat01.png" alt=""></div>
+                    <div class="chat2 popup"><img src="images/chat02.png" alt=""></div>
+                    <div class="text1 popup"><img src="images/ques.png" alt=""></div>
+                    <div class="chat3 popup"><img src="images/chat03.png" alt=""></div>
+                    <div class="text2 popup"><img src="images/fun.png" alt=""></div>
+                    <div class="chat4 popup"><img src="images/chat04.png" alt=""></div>
+                    <div class="text3 popup"><img src="images/999.png" alt=""></div>
+                </div>
+
+
+                <!--마우스 커서-->
+                <div class="cursor">
+                    <div class="cursor1 popup"><img src="images/cursor.png" alt=""></div>
+                    <div class="cursor2 popup"><img src="images/cursor.png" alt=""></div>
+                    <div class="cursor3 popup"><img src="images/cursor.png" alt=""></div>
+                    <div class="cursor4 popup"><img src="images/cursor.png" alt=""></div>
+                    <div class="cursor5 popup"><img src="images/cursor.png" alt=""></div>
+                    <div class="cursor6 popup"><img src="images/cursor.png" alt=""></div>
+                    <div class="cursor7 popup"><img src="images/cursor.png" alt=""></div>
+                    <div class="cursor8 popup"><img src="images/cursor.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- GSAP과 애니메이션 적용 -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+        // 배경의 360도 회전하는 별 모양들
+        const aniDuration = 10;
+        gsap.to('.star', {duration: aniDuration, x:0, y:0, rotation: 360, ease:'none', repeat: -1})
+
+        // 시간차를 두고 팝업처럼 뜨는 윈도우 창
+        const fadeEls = document.querySelectorAll('.window .popup'); //querySelectorAll을 쓰면 같은 클래스 속성을 가진 걸 여러 개 선택함
+        gsap.from(fadeEls, {
+            duration: 1.5, //걸리는 시간
+            scale: .7, //시작 스케일 조정
+            ease: 'elastic', //튕기듯이 애니메이션
+            opacity: 0, //투명했다가 나타나게
+            stagger: 0.4 //이 시간 단위로 하나씩 등장함
+        }) 
+
+        // 시간차를 두고 나타나는 채팅 메시지
+        const fadeEls2 = document.querySelectorAll('.chat .popup');
+        gsap.from(fadeEls2, {
+            delay: 2.5,
+            duration: 1.5, //걸리는 시간
+            scale: .7, //시작 스케일 조정
+            ease: 'elastic', //튕기듯이 애니메이션
+            opacity: 0, //투명했다가 나타나게
+            stagger: 0.7 //이 시간 단위로 하나씩 등장함
+        })
+
+        // 시간차를 두고 나타나는 마우스 커서
+        const fadeEls3 = document.querySelectorAll('.cursor .popup');
+        gsap.from(fadeEls3, {
+            delay: 1.7,
+            duration: 1.5, //걸리는 시간
+            scale: .7, //시작 스케일 조정
+            ease: 'elastic', //튕기듯이 애니메이션
+            opacity: 0, //투명했다가 나타나게
+            stagger: 0.5 //이 시간 단위로 하나씩 등장함
+        })
+    </script>
+</body>
+</html>
